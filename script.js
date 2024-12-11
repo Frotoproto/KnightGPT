@@ -176,9 +176,17 @@ suggestions.forEach((suggestion) => {
 // Delete button to delete all the chats
 
 deleteChat.addEventListener("click", () => {
-  if (confirm("Are you sure you want to delete all the chats")) {
+  if (confirm("Are you sure you want to delete all the chats?")) {
     localStorage.removeItem("savedchats");
     loadData();
+    const bubbleGlow = document.querySelector('.bubble-glow');
+    bubbleGlow.classList.remove('move-right'); // Remove move-right class
+    bubbleGlow.classList.add('move-middle'); // Add move-middle class
+
+    // Optionally, reset to move-right after some time
+    setTimeout(() => {
+      bubbleGlow.classList.remove('move-middle');
+    }, 1000); // Adjust the time as needed
   }
 });
 
@@ -200,6 +208,7 @@ typingForm.addEventListener("focusin", () => {
 typingForm.addEventListener("focusout", () => {
     typingForm.classList.remove("expanded");
 });
+
 
 
 
