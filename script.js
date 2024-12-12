@@ -194,13 +194,16 @@ suggestions.forEach((suggestion) => {
 
 deleteChat.addEventListener("click", () => {
   if (confirm("Are you sure you want to delete all the chats?")) {
-    const textElements = chat.querySelectorAll(".text");
-    textElements.forEach((textElement) => {
-      textElement.style.opacity = 0;
-      textElement.style.transition = "opacity 0.5s";
+    const messageElements = chat.querySelectorAll(".message");
+    messageElements.forEach((messageElement) => {
+      messageElement.style.opacity = 0;
+      messageElement.style.transition = "opacity 0.5s";
     });
 
     setTimeout(() => {
+      messageElements.forEach((messageElement) => {
+        messageElement.remove();
+      });
       localStorage.removeItem("savedchats");
       loadData();
       const bubbleGlow = document.querySelector('.bubble-glow');
