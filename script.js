@@ -55,9 +55,26 @@ const typingEffect = (text, textElement, messageDiv) => {
   //append the words one by one with space
 
   const typingInterval = setInterval(() => {
-    textElement.innerText +=
-      (currentWordIndex === 0 ? "" : " ") + words[currentWordIndex++];
-    messageDiv.querySelector(".icon").classList.add("hide");
+    const wordSpan = document.createElement("span");
+    wordSpan.style.opacity = 0;
+    wordSpan.style.transition = "opacity 0.5s";
+    wordSpan.innerText = words[currentWordIndex++];
+    textElement.appendChild(wordSpan);
+
+    if (currentWordIndex < words.length) {
+      const spaceSpan = document.createElement("span");
+      spaceSpan.style.opacity = 0;
+      spaceSpan.style.transition = "opacity 0.5s";
+      spaceSpan.innerText = " ";
+      textElement.appendChild(spaceSpan);
+    }
+
+    setTimeout(() => {
+      wordSpan.style.opacity = 1;
+      if (currentWordIndex < words.length) {
+        spaceSpan.style.opacity = 1;
+      }
+    }, 0);
 
     //if all the words are displayed
     if (currentWordIndex === words.length) {
@@ -177,16 +194,24 @@ suggestions.forEach((suggestion) => {
 
 deleteChat.addEventListener("click", () => {
   if (confirm("Are you sure you want to delete all the chats?")) {
-    localStorage.removeItem("savedchats");
-    loadData();
-    const bubbleGlow = document.querySelector('.bubble-glow');
-    bubbleGlow.classList.remove('move-right'); // Remove move-right class
-    bubbleGlow.classList.add('move-middle'); // Add move-middle class
+    const textElements = chat.querySelectorAll(".text");
+    textElements.forEach((textElement) => {
+      textElement.style.opacity = 0;
+      textElement.style.transition = "opacity 0.5s";
+    });
 
-    // Optionally, reset to move-right after some time
     setTimeout(() => {
-      bubbleGlow.classList.remove('move-middle');
-    }, 1000); // Adjust the time as needed
+      localStorage.removeItem("savedchats");
+      loadData();
+      const bubbleGlow = document.querySelector('.bubble-glow');
+      bubbleGlow.classList.remove('move-right'); // Remove move-right class
+      bubbleGlow.classList.add('move-middle'); // Add move-middle class
+
+      // Optionally, reset to move-right after some time
+      setTimeout(() => {
+        bubbleGlow.classList.remove('move-middle');
+      }, 1000); // Adjust the time as needed
+    }, 500); // Wait for the fade-out effect to complete
   }
 });
 

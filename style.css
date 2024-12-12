@@ -215,7 +215,7 @@ body.hide-header .header{
 }
 
 .chat-list .message.loading .avatar{
-    animation: rotate 3s linear infinite;
+    animation: rotate 3s ease infinite;
 }
 @keyframes rotate{
     100%{
@@ -266,10 +266,10 @@ body.hide-header .header{
 .chat-list .message .loading-indicator .loading-bar{
     height: 11px;
     width: 100%;
-    border-radius: 0.135rem;
+    border-radius: 1rem;
     background-position: -800px 0;
-    background: linear-gradient(to right, #913d93 , var(--primary-color), #7d2d8a);
-    animation: loading 3s linear infinite;
+    background: linear-gradient(to right, #700c7e , var(--primary-color));
+    animation: loading 3s ease infinite;
 }
 .chat-list .message .loading-indicator .loading-bar:last-child{
     width: 70%;
