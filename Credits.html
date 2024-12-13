@@ -19,15 +19,16 @@
           || This Model was trained by Frotoproto (As to why the chatbot calls themselves KnightGPT). This site was created by Frotoproto and made possible by the Gemini API (The LLM) </h2>
     </header>
 
-    <div class = back button>
-      <a href="index.html">Back</a>
-    </div>
+    <div class="back button">
+      <a href="#" onclick="fadeOutAndRedirectToIndex()">Back</a>
+  </div>
 
     <div class="bubble-glow"></div>
 
 <script>
 // Get the back button element
 const backButton = document.getElementById('back-button');
+
 
 // Add click event listener to the back button
 backButton.addEventListener('click', function() {
@@ -37,6 +38,16 @@ backButton.addEventListener('click', function() {
     // Optional: You can also add any other functionality here, like logging or animations
     console.log('Back button clicked, .backer class added.');
 });
+
+
+function fadeOutAndRedirectToIndex() {
+    document.body.classList.add('fade-out'); // Add the fade-out class to the body
+
+    // Wait for the fade-out transition to complete before redirecting
+    setTimeout(() => {
+        window.location.href = 'index.html'; // Redirect to index.html
+    }, 500); // Match this duration with the CSS transition duration
+}
   
 </script>
 

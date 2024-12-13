@@ -16,11 +16,17 @@ body.hide-header .header{
     display: none;
 }
 
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Ensure the transition is smooth */
+}
+
 .header :where(.title,.subtitle){
     color: var(--text-color);
     font-weight: 500;
     line-height: 4rem;
     font-family: product;
+    animation: fadown 0.5s ease forwards;
 }
 
 .header .title{
@@ -31,6 +37,7 @@ body.hide-header .header{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: product;
+    animation: fadown 0.5s ease forwards;
 }
 body{
     background: var(--primary-color);
@@ -71,13 +78,14 @@ body{
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust to center the button */
     z-index: 10; /* Ensure it appears above other content */
+    animation: fadup 1s ease forwards;
 }
 
 
 
 .bubble-glow {
     position: absolute; /* Position it absolutely */
-    bottom: -50%; /* Center it vertically */
+    bottom: -70%; /* Center it vertically */
     left: 50%; /* Center it horizontally */
     width: 2000px; /* Set the width */
     height: 400px; /* Set the height */
@@ -91,16 +99,45 @@ body{
 }
 
 
-.bubble-glow .backer {
-    position: absolute; /* Position it absolutely */
-    top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
-    width: 600px; /* Set the width */
-    height: 600px; /* Set the height */
-    border-radius: 50%; /* Make it circular */
-    background: conic-gradient(from 0deg at 50% 50%, #ffffff 0deg, rgb(0, 51, 255) 54.89161972682219deg, rgb(25, 0, 255) 106.69924423399361deg, rgb(255, 255, 255) 162deg, rgb(252, 50, 212) 252.00000000000003deg, rgb(247, 47, 167) 306.00000000000006deg, rgb(255, 148, 148) 360deg);
-    filter: blur(100px); /* Apply a blur effect for the glow */
-    opacity: 0.5; /* Set the opacity for a softer look */
-    transform: translate(-50%, -50%); /* Center the bubble */
-    z-index: -1; /* Send it to the back */
+.bubble-glow {
+    animation: fadeBubble 0.5s ease forwards;
+}
+
+
+@keyframes fadup {
+    0% {
+        opacity: 0;
+        transform: translatey(20px); /* Start from 20px below */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px); /* End at original position */
+    }
+}
+
+
+@keyframes fadown {
+    0% {
+        opacity: 0;
+        transform: translatey(-20px); /* Start from 20px below */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0px); /* End at original position */
+    }
+}
+
+@keyframes fadeBubble {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%); /* Start from 20px below */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* End at original position */
+    }
+}
+
+ .fade-in-up {
+    animation: fadeInUp 0.5s ease forwards; /* Adjust duration as needed */
 }

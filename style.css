@@ -15,6 +15,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.fade-out {
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
 :root{
     /* Dark mode colors */
     --text-color:#E3E3E3;
@@ -37,9 +42,22 @@ html {
 
 /* base color */
 
+
+@keyframes fadeBody {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+    
+}
+
+
 body{
     background-color: var(--primary-color);
     transition: all 0.5s ease;
+    animation: fadeBody 1.5s ease;
 }
 
 
@@ -56,6 +74,17 @@ body{
     transform: translate(-50%, -50%); /* Center the bubble */
     z-index: -1; /* Send it to the back */
     transition: all 0.7 ease;
+    animation: bubstart 2.5s ease;
+}
+
+
+@keyframes bubstart {
+    0% {
+        transform: translate(-50%, -70%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
 }
 
 .bubble-glow.move-right {
@@ -100,6 +129,17 @@ body.hide-header .header{
     margin: 0;
     display: none;
     text-align: center;
+    animation: downup 0.5s ease;
+}
+@keyframes downup {
+    0% {
+        opacity: 1; /* Start fully transparent */
+        transform: translateY(-0px); /* Start 20px above its original position */
+    }
+    100% {
+        opacity: 0; /* End fully opaque */
+        transform: translateY(-20); /* End at its original position */
+    }
 }
 
 
@@ -108,6 +148,7 @@ body.hide-header .header{
     font-weight: 500;
     line-height: 4rem; 
     text-align: center;
+    animation: updown 0.5s ease;
 }
 
 .header .title {
@@ -118,6 +159,8 @@ body.hide-header .header{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: product;
+    animation: updown 0.5s ease;
+    
 
 }
     
@@ -126,6 +169,19 @@ body.hide-header .header{
     font-size: 2.6rem;
     color: var(--subheading-color);
     text-align: center;
+    animation: updown 0.5s ease;
+}
+
+
+@keyframes updown {
+    0% {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(-20px); /* Start 20px above its original position */
+    }
+    100% {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* End at its original position */
+    }
 }
 
 .suggestion-list{
@@ -320,6 +376,18 @@ body.hide-header .header{
     padding: 1rem;
     background: #00000000;
     transition: all 0.5s ease;
+    animation: typearea 1s ease;
+}
+
+@keyframes typearea {
+    0% {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(20px); /* Start 20px above its original position */
+    }
+    100% {
+        opacity: 1; /* End fully opaque */
+        transform: translateY(0); /* End at its original position */
+    }
 }
 
 .typing-area :where(.typing-form, .action-buttons){

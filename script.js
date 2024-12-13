@@ -272,5 +272,14 @@ typingForm.querySelector(".typing-input").addEventListener("input", () => {
   }
 });
 
+function fadeOutAndRedirect() {
+  document.body.classList.add('fade-out'); // Add the fade-out class to the body
+
+  // Wait for the fade-out transition to complete before redirecting
+  setTimeout(() => {
+      window.location.href = 'Credits.html'; // Redirect to Credits.html
+  }, 550); // Match this duration with the CSS transition duration
+}
+
 
 
