@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/Knight.png" type="image/x-icon" />
+    <title>KnightGPT</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="chat.css" />
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title">Hello, User.</h1>
+      <p class="subtitle">Need anything??</p>
+    </header>
+
+    <div class="bubble-glow"></div> <!-- Soft bubble glow element -->
+
+    <div class="chat-list"></div>
+
+    <div class="typing-area">
+      <form action="#" class="typing-form">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            placeholder="Prompt Here."
+            class="typing-input"
+            required
+            autofocus
+          />
+          <button
+            id="send-message-button"
+            class="icon material-symbols-rounded"
+          >
+            send
+          </button>
+        </div>
+        <div class="action-buttons">
+          <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+          <span id="arrow_back" class="icon material-symbols-rounded">arrow_back</span>
+        </div>
+      </form>
+      <p class="disclaimer">
+        Ai might enter inaccurate responses so do not fully rely on this software. 
+      </p>
+    </div>
+
+
+    <script src="chat.js"></script>
+  </body>
+</html>
