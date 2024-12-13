@@ -11,6 +11,10 @@
     src: url(product.ttf);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root{
     /* Dark mode colors */
     --text-color:#E3E3E3;
@@ -90,6 +94,7 @@ body{
     justify-content: center; /* Center vertically */
     text-align: center; /* Center the text within the elements */
     font-family: product;
+    transition: all 0.5s ease;
 }
 body.hide-header .header{
     margin: 0;
@@ -215,11 +220,17 @@ body.hide-header .header{
 }
 
 .chat-list .message.loading .avatar{
-    animation: rotate 3s ease infinite;
+    animation: rotate 1.5s ease infinite;
 }
-@keyframes rotate{
-    100%{
-        transform: rotate(360deg);
+@keyframes rotate {
+    0% {
+        transform: translateY(0); /* Start at the original position */
+    }
+    50% {
+        transform: translateY(-20px); /* Move up by 20 pixels */
+    }
+    100% {
+        transform: translateY(0); /* Return to the original position */
     }
 }
 
@@ -247,6 +258,20 @@ body.hide-header .header{
 }
 
 
+.loading-indicator {
+    display: none; /* Initially hidden */
+    gap: 0.8rem;
+    width: 100%;
+    flex-direction: column;
+    opacity: 1; /* Set initial opacity */
+    transition: all 1s ease; /* Add transition for fading */
+}
+
+.loading-indicator.fade-out {
+    opacity: 0; /* Set opacity to 0 for fade-out effect */
+    transition: all 1s ease;
+}
+
 
 .chat-list .message .icon:hover{
     background: var(--secondary-hover-color);
@@ -269,7 +294,7 @@ body.hide-header .header{
     border-radius: 1rem;
     background-position: -800px 0;
     background: linear-gradient(to right, #700c7e , var(--primary-color));
-    animation: loading 3s ease infinite;
+    animation: loading 5s linear infinite;
 }
 .chat-list .message .loading-indicator .loading-bar:last-child{
     width: 70%;
@@ -278,8 +303,11 @@ body.hide-header .header{
     0%{
         background-position:-800px 0 ;
     }
-    100%{
+    50%{
         background-position:800px 0 ;
+    } 
+    100% {
+        background-position:1600px 0 ;
     }
 }
 
@@ -324,6 +352,10 @@ body.hide-header .header{
     transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
+.word-fade {
+    color: rgb(134, 0, 151); /* Initial color */
+    transition: color 0.5s; /* Transition for color change */
+  }
 
 .action-buttons .icon:hover {
     background: var(--secondary-hover-color); /* Change background on hover */
@@ -348,7 +380,7 @@ body.hide-header .header{
      border-radius: 25px;
      background-color: #72727217;
      backdrop-filter: blur(50px);
-     transition: all 0.7s ease;
+     transition: all 1s ease;
      
 }
 
@@ -401,6 +433,7 @@ body.hide-header .header{
 .typing-form.expanded {
     padding: 1rem 0.0rem; /* Increase padding on focus */
 }
+
 
 .typing-form .typing-input:valid ~ #send-message-button{
     transform: scale(1);
