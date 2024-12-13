@@ -178,6 +178,14 @@ const copyMessage = (copyButton) => {
 const sendMessage = () => {
   userMessage =
     typingForm.querySelector(".typing-input").value.trim() || userMessage;
+
+
+ if (userMessage === "9909") {
+      localStorage.removeItem("savedchats"); // Clear the saved chats
+      window.location.href = "chat.html";
+      return; // Don't proceed further if redirected
+    }
+  
   // Exit if there is no message or response is generating
   if (!userMessage || apiResponse) return;
   apiResponse = true;
