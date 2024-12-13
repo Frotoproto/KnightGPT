@@ -28,6 +28,7 @@ html {
     --primary-color: #000000;
     --secondary-color: #222027;
     --secondary-hover-color: #444;
+    transition: all 0.7s ease;
 }
 
 .light_mode{
@@ -38,6 +39,7 @@ html {
     --primary-color: #FFF;
     --secondary-color: #E9EEF6;
     --secondary-hover-color: #DBE1EA;
+    transition: all 0.7s ease;
 }
 
 /* base color */
@@ -76,6 +78,7 @@ body{
     transition: all 0.7 ease;
     animation: bubstart 2.5s ease;
 }
+
 
 
 @keyframes bubstart {
@@ -149,17 +152,19 @@ body.hide-header .header{
     line-height: 4rem; 
     text-align: center;
     animation: updown 0.5s ease;
+    transition: all 0.7s ease;
 }
 
 .header .title {
     width: fit-content; /* Allow the title to shrink-wrap */
     font-size: 3rem;
     background-clip: text;
-    background: linear-gradient(to right, #ca42f4, #dbc8e6);
+    background: linear-gradient(to right, #ca42f4, var(--text-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: product;
     animation: updown 0.5s ease;
+    transition: all 0.7s ease;
     
 
 }

@@ -79,7 +79,7 @@ const typingEffect = (text, textElement, messageDiv) => {
 
     setTimeout(() => {
       wordSpan.style.opacity = 1;
-      wordSpan.style.color = "white"; // Change color to white
+      wordSpan.style.color = "var(--text-color)"; // Change color to the current text color; // Change color to white
       if (currentWordIndex < words.length) {
         spaceSpan.style.opacity = 1;
       }
